@@ -1,12 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Student Attendance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .attendance-table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .attendance-table th, .attendance-table td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    .attendance-table th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .attendance-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .attendance-table tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .status-present {
+      color: #0052CC;
+      font-weight: bold;
+    }
+
+    .status-absent {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    Hello
+
+  <h1>Student Attendance</h1>
+
+  <table class="attendance-table">
+    <thead>
+      <tr id="header-row">
+        <th>Student Name</th>
+      
+      </tr>
+    </thead>
+
+    <tbody id="table-body">
+ 
+    </tbody>
+  </table>
+
+ <p><h1>baned student is : Ali</h1></p>
+  <script>
     
+    const students = ["John Doe", "Jane Smith", "Emily Brown", "Ali"];
+    const courses = ["Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5"];
+
+   
+    const attendanceData = [
+      [1, 1, 0, 1, 0],
+      [0, 1, 1, 0, 1], 
+      [1, 1, 0, 1, 1], 
+      [0, 0, 0, 0, 0]  
+    ]
+  
+ 
+
+    
+    const headerRow = document.getElementById("header-row");
+    courses.forEach(course => {
+      const th = document.createElement("th");
+      th.textContent = course;
+      headerRow.appendChild(th);
+    });
+
+    
+    const tableBody = document.getElementById("table-body");
+    students.forEach((student, studentIndex) => {
+      const row = document.createElement("tr");
+
+      
+      const nameCell = document.createElement("td");
+      const nameLink = document.createElement("a");
+      nameLink.textContent = student;
+      nameLink.href = `index2.html?name=${encodeURIComponent(student)}&data=${JSON.stringify(attendanceData[studentIndex])}`;
+      nameCell.appendChild(nameLink);
+      row.appendChild(nameCell);
+
+      
+      attendanceData[studentIndex].forEach(attendance => {
+        const attendanceCell = document.createElement("td");
+        attendanceCell.textContent = attendance ? "Present" : "Absent";
+        attendanceCell.className = attendance ? "status-present" : "status-absent";
+        row.appendChild(attendanceCell);
+      });
+
+      tableBody.appendChild(row);
+    });
+  </script>
+
 </body>
 </html>

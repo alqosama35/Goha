@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .attendance-table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .attendance-table th, .attendance-table td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    .attendance-table th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .attendance-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .attendance-table tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .status-present {
+      color: #0052CC;
+      font-weight: bold;
+    }
+
+    .status-absent {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="student-name">Attendance Details</h1>
+
+  <table class="attendance-table">
+    <thead>
+      <tr>
+        <th>Lesson</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody id="table-body">
+    
+    </tbody>
+  </table>
+
+  <script>
+    
+    const params = new URLSearchParams(window.location.search);
+    const studentName = params.get("name");
+    const attendanceData = JSON.parse(params.get("data"));
+
+    
+    document.getElementById("student-name").textContent = `${studentName}'s Attendance`;
+
+    
+    const tableBody = document.getElementById("table-body");
+    for (let i = 1; i <= 30; i++) {
+      const row = document.createElement("tr");
+
+      const lessonCell = document.createElement("td");
+      lessonCell.textContent = `Lesson ${i}`;
+      row.appendChild(lessonCell);
+
+      const statusCell = document.createElement("td");
+      const status = attendanceData[i % attendanceData.length]; 
+      statusCell.textContent = status ? "Present" : "Absent";
+      statusCell.className = status ? "status-present" : "status-absent";
+      row.appendChild(statusCell);
+
+      tableBody.appendChild(row);
+    }
+  </script>
+
+</body>
+</html>
