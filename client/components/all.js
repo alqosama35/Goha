@@ -1,5 +1,7 @@
 //--make new branch
 // git branch <branch-name>
+//--go for new branch
+//git checkout newBranch
 //-- add your edits
 // git add .
 //--commit your edits
