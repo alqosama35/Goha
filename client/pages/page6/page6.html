@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment</title>
+    <link rel="stylesheet" href="page6.css">
+</head>
+<body>
+    <header>
+        <button id="go-back-button">Go Back</button>
+        <h1>Welcome to Our Course Enrollment Page</h1>
+    </header>
+    <main>
+        <section id="enrolled-courses">
+            <h2>Enrolled Courses</h2>
+            <div class="course-container" id="enrolled-container">
+                <!-- Enrolled courses will be dynamically added here -->
+            </div>
+        </section>
+        <section id="all-courses">
+            <h2>All Courses</h2>
+            <div class="course-container" id="all-courses-container">
+                <!-- All courses will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+    <div id="confirmation-popup" class="popup">
+        <div class="popup-content">
+            <p>Are you sure you want to delete this course?</p>
+            <button id="confirm-delete">Yes</button>
+            <button id="cancel-delete">No</button>
+        </div>
+    </div>
+    <div id="course-info-popup" class="popup">
+        <div class="popup-content">
+            <h2 id="course-info-title"></h2>
+            <p id="course-info-teachers"></p>
+            <p id="course-info-times"></p>
+            <label for="course-option">Choose an option:</label>
+            <select id="course-option"></select>
+            <button id="enroll-option-button">Enroll</button>
+            <button id="close-info-popup">Close</button>
+        </div>
+    </div>
+    <script src="page6.js"></script>
+</body>
+</html>
