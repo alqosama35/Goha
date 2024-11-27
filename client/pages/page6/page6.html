@@ -37,10 +37,31 @@
             <h2 id="course-info-title"></h2>
             <p id="course-info-teachers"></p>
             <p id="course-info-times"></p>
+            <p id="course-info-price"></p> <!-- Add this line for price -->
             <label for="course-option">Choose an option:</label>
             <select id="course-option"></select>
             <button id="enroll-option-button">Enroll</button>
             <button id="close-info-popup">Close</button>
+        </div>
+    
+    <div id="payment-popup" class="popup">
+        <div class="popup-content">
+            <h2>Payment Details</h2>
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" required>
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" required>
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" required>
+            <button id="confirm-payment">Pay</button>
+            <button id="cancel-payment">Cancel</button>
+        </div>
+    </div>
+    
+    <div id="success-popup" class="popup">
+        <div class="popup-content">
+            <p>Successfully Paid!</p>
+            <button id="close-success-popup">Close</button>
         </div>
     </div>
     <script src="page6.js"></script>
