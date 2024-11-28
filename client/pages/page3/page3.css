@@ -108,7 +108,7 @@
  .quiz-app .bullets .spans span {
    width: 15px;
    height: 15px;
-   background-color: #81bcff;
+   background-color: red;
    margin-right: 5px;
    border-radius: 50%;
  }
