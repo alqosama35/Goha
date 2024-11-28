@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal</title>
+    <link rel="stylesheet" href="page5.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Teacher Portal</h1>
+    </header>
+    <main>
+        <section id="enrolled-courses">
+            <h2>Courses Enrolled</h2>
+            <div class="course-container" id="enrolled-course-container">
+                <!-- Enrolled courses will be dynamically added here -->
+            </div>
+        </section>
+        <section id="available-courses">
+            <h2>Available Courses</h2>
+            <div class="course-container" id="course-selection">
+                <!-- Existing courses will be dynamically added here -->
+            </div>
+        </section>
+        <section id="add-course">
+            <div class="course-card add-card" id="add-course-card">
+                <h3>Add New Course</h3>
+                <button id="add-course-button">+</button>
+            </div>
+        </section>
+    </main>
+    <div id="teach-popup" class="popup">
+        <div class="popup-content">
+            <h2 id="popup-title">Teach Course</h2>
+            <form id="teach-course-form">
+                <div id="existing-course-fields">
+                    <label for="course-select">Select Course:</label>
+                    <select id="course-select"></select>
+                    <label for="existing-course-price">Price:</label>
+                    <input type="number" id="existing-course-price" required>
+                    <label for="existing-course-date">Date:</label>
+                    <input type="date" id="existing-course-date" required>
+                </div>
+                <div id="new-course-fields">
+                    <label for="new-course-name">Course Name:</label>
+                    <input type="text" id="new-course-name" required>
+                    <label for="new-course-description">Course Description:</label>
+                    <textarea id="new-course-description" required></textarea>
+                    <label for="new-course-price">Price:</label>
+                    <input type="number" id="new-course-price" required>
+                    <label for="new-course-date">Date:</label>
+                    <input type="date" id="new-course-date" required>
+                </div>
+                <button type="submit">Submit</button>
+                <button type="button" id="close-popup">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div id="confirm-delete-popup" class="popup">
+        <div class="popup-content">
+            <p>Are you sure you want to delete this course?</p>
+            <button id="confirm-delete">Yes</button>
+            <button id="cancel-delete">No</button>
+        </div>
+    </div>
+    <script src="page5.js"></script>
+</body>
+</html>
