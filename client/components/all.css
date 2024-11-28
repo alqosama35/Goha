@@ -1,0 +1,23 @@
+:root .c1{
+    --main:#0052CC;
+    --s2: #F4F5F7;
+    --s3: #FFAB00;
+}
+
+:root .c2{
+    --main:#28A745;
+    --s2: #EDEDED;
+    --s3: #FFC107;
+}
+
+:root .c3{
+    --main:white;
+    --s2: black;
+    --s3: gray;
+}
+
+:root .c4{
+    --main:#6A1B9A;
+    --s2: #FFFFFF;
+    --s3: #FFC107;
+}
