@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom right, #f0f4f8, #d9e8f0);
+    background: linear-gradient(to bottom right, #747b82, #a6afb4);
 }
 
 header {
@@ -108,5 +108,22 @@ main {
 }
 
 .popup-content button:hover {
+    background-color: #555;
+}
+
+#go-back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem; /* Increase padding to make the button bigger */
+    font-size: 1.2rem; /* Increase font size for better visibility */
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#go-back-button:hover {
     background-color: #555;
 }
