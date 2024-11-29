@@ -108,7 +108,7 @@
       const nameCell = document.createElement("td");
       const nameLink = document.createElement("a");
       nameLink.textContent = student;
-      nameLink.href = `index2.html?name=${encodeURIComponent(student)}&data=${JSON.stringify(attendanceData[studentIndex])}`;
+      nameLink.href = `attdetails.html?name=${encodeURIComponent(student)}&data=${JSON.stringify(attendanceData[studentIndex])}`;
       nameCell.appendChild(nameLink);
       row.appendChild(nameCell);
 
