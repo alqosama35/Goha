@@ -53,6 +53,55 @@
       color: red;
       font-weight: bold;
     }
+
+
+    h1, h2 {
+      text-align: center;
+      color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      background-color: lightblue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #007bff;
+    }
+
+    #history {
+      margin-top: 20px;
+    }
+
+    #history li {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+     
+
+
   </style>
 </head>
 <body>
@@ -72,8 +121,18 @@
  
     </tbody>
   </table>
+  
+  <ul>
+    <li>John Doe <button onclick="panStudent('John Doe')">Pan</button></li>
+    <li>Jane Smith <button onclick="panStudent('Jane Smith')">Pan</button></li>
+    <li>Emily Brown <button onclick="panStudent('Emily Brown')">Pan</button></li>
+    <li>Ali <button onclick="panStudent('Ali')">Pan</button></li>
+  </ul>
 
- <p><h1>baned student is : Ali</h1></p>
+  <h2>Pan History</h2>
+  <ul id="history"></ul>
+  
+
   <script>
 
 
@@ -122,6 +181,46 @@
 
       tableBody.appendChild(row);
     });
+
+
+
+  //
+  function loadHistory() {
+      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
+      const historyList = document.getElementById('history');
+
+      historyList.innerHTML = history
+        .map(
+          (item, index) =>
+            `<li>
+              ${item} 
+              <button onclick="removePan(${index})">Remove</button>
+            </li>`
+        )
+        .join('');
+    }
+
+    // Add a new pan to local storage
+    function panStudent(student) {
+      const timestamp = new Date().toLocaleString();
+      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
+      history.push(`${student} `);
+      localStorage.setItem('panHistory', JSON.stringify(history));
+      loadHistory();
+    }
+
+    // Remove a pan from local storage
+    function removePan(index) {
+      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
+      history.splice(index, 1); // Remove the selected item
+      localStorage.setItem('panHistory', JSON.stringify(history));
+      loadHistory();
+    }
+
+    
+    loadHistory();
+
+
   </script>
 
 </body>
