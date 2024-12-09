@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Class Portal</title>
+</head>
+<body>
+    <header>
+        <style> body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #747b82, #a6afb4);
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        main {
+            padding: 2rem;
+        }
+        
+        .Class-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .Class-card {
+            background-color: #fff;
+            margin: 1rem;
+            padding: 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .Class-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .Class-card h3 {
+            margin: 1rem 0;
+        }
+        
+        .Class-card .hidden-info {
+            display: none;
+            margin: 1rem 0;
+        }
+        
+        .Class-card:hover .hidden-info {
+            display: block;
+        }
+        
+        .add-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .popup-content form label,
+        .popup-content form input,
+        .popup-content form textarea,
+        .popup-content form select {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .popup-content form input,
+        .popup-content form textarea,
+        .popup-content form select {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .popup-content button {
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .popup-content button:hover {
+            background-color: #555;
+        }
+        
+        #go-back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        #go-back-button:hover {
+            background-color: #555;
+        }
+        
+        .delete-button {
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .modal-button {
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .modal-button:hover {
+            background-color: #555;
+        }
+        
+        .modal-container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }</style>
+        <button id="go-back-button">Go Back</button>
+        <h1>Welcome to the Class Portal</h1>
+    </header>
+    <main>
+        <section id="Reserved-Classes">
+            <h2>Classes Reserved</h2>
+            <div class="Class-container" id="Reserved-Class-container">
+                <!-- Taught Classes will be dynamically added here -->
+            </div>
+        </section>
+        <section id="available-Classes">
+            <h2>Available Classes</h2>
+            <div class="Class-container" id="Class-selection">
+                <!-- Existing Classes will be dynamically added here -->
+            </div>
+        </section>
+        <section id="add-Class">
+            <div class="Class-card add-card" id="add-Class-card">
+                <h3>Add New Class</h3>
+                <button id="add-Class-button">+</button>
+            </div>
+        </section>
+    </main>
+    <div id="Reserve-existing-popup" class="popup">
+        <div class="popup-content">
+            <h2 id="existing-popup-title">Existing Class</h2>
+            <form id="Reserve-existing-Class-form">
+                <label for="Class-select">Select Class:</label>
+                <select id="Class-select"></select>
+                <label for="existing-Class-price">Price:</label>
+                <input type="number" id="existing-Class-price" required />
+                <label for="existing-Class-date">Date:</label>
+                <input type="date" id="existing-Class-date" required />
+                <button type="submit">Submit</button>
+                <button type="button" id="close-existing-popup">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div id="Reserve-new-popup" class="popup">
+        <div class="popup-content">
+            <h2 id="new-popup-title">Add New Class</h2>
+            <form id="Reserve-new-Class-form">
+                <label for="new-Class-id">Class ID:</label>
+                <input type="number" id="new-Class-id" required readonly />
+                <label for="new-Class-description">Class Description:</label>
+                <textarea id="new-Class-description" required></textarea>
+                <label for="new-Class-price">Price:</label>
+                <input type="number" id="new-Class-price" required />
+                <label for="new-Class-date">Date:</label>
+                <input type="date" id="new-Class-date" required />
+                <button type="submit">Submit</button>
+                <button type="button" id="close-new-popup">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <!-- Modal for Deletion Confirmation -->
+    <div id="delete-confirmation-modal" class="popup">
+        <div class="modal-container">
+            <h3 id="modal-class-title"></h3>
+            <button id="delete-confirm-button" class="modal-button">Yes</button>
+            <button id="delete-cancel-button" class="modal-button">No</button>
+        </div>
+    </div>
+    <script > 
+        let Classes = [
+    {
+        title: "Class 1",
+        description: "50 seats and a normal board",
+        availability: "Available",
+        price: "$100",
+        options: [
+            { date: "2024-01-01", time: "9:00am - 12:00pm" },
+            { date: "2024-01-08", time: "1:00pm - 4:00pm" },
+        ],
+    },
+    {
+        title: "Class 2",
+        description: "100 seats and a normal board",
+        availability: "Reserved",
+        price: "$120",
+        options: [
+            { date: "2024-02-01", time: "9:00am - 12:00pm" },
+            { date: "2024-02-08", time: "1:00pm - 4:00pm" },
+        ],
+    },
+    {
+        title: "Class 3",
+        description: "100 seats and a smart board",
+        availability: "Available",
+        price: "$180",
+        options: [
+            { date: "2024-03-01", time: "10:00am - 1:00pm" },
+            { date: "2024-03-08", time: "2:00pm - 5:00pm" },
+        ],
+    },
+    {
+        title: "Class 4",
+        description: "150 seats and a normal board",
+        availability: "Available",
+        price: "$130",
+        options: [
+            { date: "2024-04-01", time: "9:00am - 12:00pm" },
+            { date: "2024-04-08", time: "1:00pm - 4:00pm" },
+        ],
+    },
+    {
+        title: "Class 5",
+        description: "200 seats and a smart board",
+        availability: "Available",
+        price: "$300",
+        options: [
+            { date: "2024-05-01", time: "9:00am - 12:00pm" },
+            { date: "2024-05-08", time: "1:00pm - 4:00pm" },
+        ],
+    },
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+    const addClassButton = document.getElementById("add-Class-button");
+    const closeExistingPopupButton = document.getElementById("close-existing-popup");
+    const closeNewPopupButton = document.getElementById("close-new-popup");
+
+    // Open the "Add New Class" Popup
+    addClassButton.onclick = ()=> {
+        document.getElementById("Reserve-new-popup").style.display = "flex";
+        document.getElementById("new-Class-id").value = Classes.length + 1; // Set next ID
+        document.getElementById("new-Class-description").value = ""; // Reset Description
+        document.getElementById("new-Class-price").value = ""; // Reset Price
+        document.getElementById("new-Class-date").value = ""; // Reset Date
+    };
+
+    // Close Existing Class Popup
+    if (closeExistingPopupButton) {
+        closeExistingPopupButton.onclick = () => {
+            document.getElementById("Reserve-existing-popup").style.display = "none";
+        };
+    }
+
+    // Close New Class Popup
+    if (closeNewPopupButton) {
+        closeNewPopupButton.onclick = () => {
+            document.getElementById("Reserve-new-popup").style.display = "none";
+        };
+    }
+
+    // Populate dropdown and display classes
+    populateClassSelect();
+    displayClasses();
+});
+
+// Populate Class Select Dropdown
+function populateClassSelect() {
+    const ClassSelect = document.getElementById("Class-select");
+    if (ClassSelect) {
+        ClassSelect.innerHTML = '<option value="">Select a Class</option>';
+        Classes.forEach((Class, index) => {
+            const option = document.createElement("option");
+            option.value = index;
+            option.textContent = `${Class.title}`;
+            ClassSelect.appendChild(option);
+        });
+    }
+}
+
+// Display Classes Based on Availability
+function displayClasses() {
+    const availableClassContainer = document.getElementById("Class-selection");
+    const reservedClassContainer = document.getElementById("Reserved-Class-container");
+
+    // Clear both sections before adding new classes
+    availableClassContainer.innerHTML = "";
+    reservedClassContainer.innerHTML = "";
+
+    Classes.forEach((Class, index) => {
+        const ClassCard = document.createElement("div");
+        ClassCard.classList.add("Class-card");
+
+        const ClassTitle = document.createElement("h3");
+        ClassTitle.textContent = Class.title;
+        ClassCard.appendChild(ClassTitle);
+
+        if (Class.availability === "Available") {
+            const hiddenInfo = document.createElement("div");
+            hiddenInfo.classList.add("hidden-info");
+            hiddenInfo.innerHTML = `
+                <p>Description: ${Class.description}</p>
+                <p>Price: ${Class.price}</p>
+            `;
+            ClassCard.appendChild(hiddenInfo);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.classList.add("delete-button");
+            deleteButton.onclick = () => {
+                showDeleteConfirmationModal(Class, index, true);
+            };
+            ClassCard.appendChild(deleteButton);
+
+            // Make the card clickable to move it to the Reserved section
+            ClassCard.onclick = () => {
+                Class.availability = "Reserved";
+                displayClasses();
+                saveToLocalStorage();
+            };
+
+            availableClassContainer.appendChild(ClassCard);
+        } else if (Class.availability === "Reserved") {
+            const dateRange = document.createElement("p");
+            dateRange.textContent = `From: ${Class.options[0].date} To: ${Class.options[1].date}`;
+            ClassCard.appendChild(dateRange);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.classList.add("delete-button");
+            deleteButton.onclick = () => {
+                showDeleteConfirmationModal(Class, index, false);
+            };
+            ClassCard.appendChild(deleteButton);
+
+            reservedClassContainer.appendChild(ClassCard);
+        }
+    });
+
+    // Add the "Add Class" card to the Available section
+    const addClassCard = document.getElementById("add-Class-card");
+    availableClassContainer.appendChild(addClassCard);
+}
+
+// Handle form submission for adding a new class
+document.getElementById("Reserve-new-Class-form").onsubmit = (event) => {
+    event.preventDefault();
+
+    const newClassDescription = document.getElementById("new-Class-description").value;
+    const newClassPrice = document.getElementById("new-Class-price").value;
+    const newClassDate = document.getElementById("new-Class-date").value;
+
+    // Create a new class object
+    const newClass = {
+        title: `Class ${Classes.length + 1}`,
+        description: newClassDescription,
+        price: `$${newClassPrice}`,
+        availability: "Available", // Initially available
+        options: [{ date: newClassDate, time: "To be determined" }],
+    };
+
+    // Add the new class and update the display
+    Classes.push(newClass);
+    displayClasses();
+    populateClassSelect();
+    document.getElementById("Reserve-new-popup").style.display = "none"; // Close the popup
+    saveToLocalStorage();
+};
+
+// Show Delete Confirmation Modal
+function showDeleteConfirmationModal(Class, index, isAvailable) {
+    const modal = document.getElementById("delete-confirmation-modal");
+    const modalClassTitle = document.getElementById("modal-class-title");
+
+    modalClassTitle.textContent = `Are you sure you want to delete ${Class.title}?`;
+    modal.style.display = "flex";
+
+    document.getElementById("delete-confirm-button").onclick = () => {
+        if (isAvailable) {
+            Classes.splice(index, 1); // Remove from available
+        } else {
+            Class.availability = "Available"; // Move back to available
+        }
+        displayClasses(); // Re-render classes
+        modal.style.display = "none"; // Close modal
+        saveToLocalStorage();
+    };
+
+    document.getElementById("delete-cancel-button").onclick = () => {
+        modal.style.display = "none"; // Close modal
+    };
+}
+
+
+
+    </script>
+</body>
+</html>
