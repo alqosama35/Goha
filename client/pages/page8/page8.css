@@ -1,0 +1,82 @@
+body {
+   font-family: Arial, sans-serif;
+   margin: 20px;
+   background-color: #f7f7f7;
+ }
+ .container {
+   max-width: 600px;
+   margin: 0 auto;
+   padding: 20px;
+   padding-right: 35px;
+   background: #fff;
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   position: relative;
+ }
+ h1 {
+   text-align: center;
+   color: #177cff;
+   width: 50%;
+   position: absolute;
+   right: 20px;
+ }
+ label {
+   font-weight: bold;
+   display: block;
+   margin-top: 15px;
+ }
+ input[type="text"],
+ textarea,
+ select {
+   width: 100%;
+   padding: 10px;
+   margin-top: 5px;
+   border: 1px solid #ccc;
+   outline: none;
+   border-radius: 5px;
+   font-size: 14px;
+ }
+ textarea:focus,
+ input[type="text"]:focus {
+   outline: 1px solid #0044ff;
+   animation: rainbowOutline 3s linear infinite;
+ }
+
+ button {
+   /* width: 30%; */
+   padding: 10px;
+   margin-top: 20px;
+   background-color: #0054c2;
+   color: white;
+   border: none;
+   font-weight: 700;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+ }
+ .sub {
+   width: 30%;
+   position: absolute;
+   right: 34px;
+   bottom: 20px;
+ }
+ .Finish {
+   width: 30%;
+   outline: none;
+ }
+ button:hover {
+   background-color: #0077ff;
+ }
+
+ #counter {
+   text-align: center;               
+   padding: 10px 8px;                 
+   font-size: 15px;                   
+   background-color:#005eda;          
+   width: 30%;                      
+   color: #ffffff;
+   font-weight: 700;
+   margin-top: 25px;
+   border-radius: 5px;
+   margin-bottom: 25px;
+ }

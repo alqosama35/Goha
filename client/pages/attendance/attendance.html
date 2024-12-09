@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Student Attendance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .attendance-table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .attendance-table th, .attendance-table td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    .attendance-table th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .attendance-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .attendance-table tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .status-present {
+      color: #0052CC;
+      font-weight: bold;
+    }
+
+    .status-absent {
+      color: red;
+      font-weight: bold;
+    }
+
+
+    h1, h2 {
+      text-align: center;
+      color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      background-color: lightblue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #007bff;
+    }
+
+    #history {
+      margin-top: 20px;
+    }
+
+    #history li {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+     
+
+
+  </style>
+</head>
+<body>
+
+
+  <h1>Student Attendance</h1>
+
+  <table class="attendance-table">
+    <thead>
+      <tr id="header-row">
+        <th>Student Name</th>
+      
+      </tr>
+    </thead>
+
+    <tbody id="table-body">
+ 
+    </tbody>
+  </table>
+  
+  <ul>
+    <li>John Doe <button onclick="panStudent('John Doe')">Pan</button></li>
+    <li>Jane Smith <button onclick="panStudent('Jane Smith')">Pan</button></li>
+    <li>Emily Brown <button onclick="panStudent('Emily Brown')">Pan</button></li>
+    <li>Ali <button onclick="panStudent('Ali')">Pan</button></li>
+  </ul>
+
+  <h2>Pan History</h2>
+  <ul id="history"></ul>
+  
+
+  <script>
+
+
+    
+    const students = ["John Doe", "Jane Smith", "Emily Brown", "Ali"];
+    const courses = ["Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5"];
+
+   
+    const attendanceData = [
+      [1, 1, 0, 1, 0],
+      [0, 1, 1, 0, 1], 
+      [1, 1, 0, 1, 1], 
+      [0, 0, 0, 0, 0]  
+    ]
+  
+ 
+
+    
+    const headerRow = document.getElementById("header-row");
+    courses.forEach(course => {
+      const th = document.createElement("th");
+      th.textContent = course;
+      headerRow.appendChild(th);
+    });
+
+    
+    const tableBody = document.getElementById("table-body");
+    students.forEach((student, studentIndex) => {
+      const row = document.createElement("tr");
+
+      
+      const nameCell = document.createElement("td");
+      const nameLink = document.createElement("a");
+      nameLink.textContent = student;
+      nameLink.href = `attdetails.html?name=${encodeURIComponent(student)}&data=${JSON.stringify(attendanceData[studentIndex])}`;
+      nameCell.appendChild(nameLink);
+      row.appendChild(nameCell);
+
+      
+      attendanceData[studentIndex].forEach(attendance => {
+        const attendanceCell = document.createElement("td");
+        attendanceCell.textContent = attendance ? "Present" : "Absent";
+        attendanceCell.className = attendance ? "status-present" : "status-absent";
+        row.appendChild(attendanceCell);
+      });
+
+      tableBody.appendChild(row);
+    });
+
+
+
+  //
+  function loadHistory() {
+      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
+      const historyList = document.getElementById('history');
+
+      historyList.innerHTML = history
+        .map(
+          (item, index) =>
+            `<li>
+              ${item} 
+              <button onclick="removePan(${index})">Remove</button>
+            </li>`
+        )
+        .join('');
+    }
+
+    // Add a new pan to local storage
+    function panStudent(student) {
+      const timestamp = new Date().toLocaleString();
+      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
+      history.push(`${student} `);
+      localStorage.setItem('panHistory', JSON.stringify(history));
+      loadHistory();
+    }
+
+    // Remove a pan from local storage
+    function removePan(index) {
+      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
+      history.splice(index, 1); // Remove the selected item
+      localStorage.setItem('panHistory', JSON.stringify(history));
+      loadHistory();
+    }
+
+    
+    loadHistory();
+
+
+  </script>
+
+</body>
+</html>
