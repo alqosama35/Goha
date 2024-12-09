@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> </title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <link rel="stylesheet" href="addQuestion.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Questions form</h1>
+      <form id="addQuestionForm">
+        <div id="counter">Question number: 1</div>
+        <label for="questionText">Question </label>
+        <textarea
+          id="questionText"
+          rows="5"
+          placeholder="Write a Question "
+          required
+        ></textarea>
+
+        <label>Choices</label>
+        <input type="text" id="option1" placeholder="choice A" required />
+        <input type="text" id="option2" placeholder="choice B" required />
+        <input type="text" id="option3" placeholder="choice C" required />
+        <input type="text" id="option4" placeholder="choice D" required />
+
+        <label for="correctOption"> Correct answer </label>
+        <select id="correctOption" required>
+          <option value="1">A</option>
+          <option value="2">B</option>
+          <option value="3">C</option>
+          <option value="4">D</option>
+        </select>
+
+        <button type="submit" class="sub">Add</button>
+      </form>
+      <button type="submit" class="Finish">Finish</button>
+
+    </div>
+
+  <script src="addQuestion.js"></script>
+  </body>
+</html>
