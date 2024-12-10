@@ -299,6 +299,4 @@ function displayCourses() {
 }
 
 document.addEventListener("DOMContentLoaded", displayCourses);
-document.getElementById("go-back-button").onclick = () => {
-  window.location.href = "../homeBage/home.html"; // Replace 'anotherPage.html' with the actual URL of the page you want to go back to
-};
+
