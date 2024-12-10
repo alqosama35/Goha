@@ -13,12 +13,20 @@ document
       document.getElementById("option4").value,
     ];
     const correctOption = document.getElementById("correctOption").value;
-
+    
     console.log("Question:", questionText);
     console.log("Choices:", options);
     console.log("Correct answer:", options[correctOption - 1]);
+    
+    const jsonObject = {
+      question: questionText, 
+      choices: options, 
+      correctChoice: options[correctOption - 1]
+    };
 
-    counter++;
+    console.log(jsonObject);
+
+    counter++; 
     document.getElementById("counter").innerText =
       "Question number: " + counter;
 
