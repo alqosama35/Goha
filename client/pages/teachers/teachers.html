@@ -1,208 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <link rel="stylesheet" href="new.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teachers</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
-      color: #333;
-      text-align: center;
-    }
-
-    .teacher {
-      display: inline-block;
-      background-color: #fff;
-      margin: 10px;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      width: 200px;
-      text-align: center;
-    }
-
-    .teacher img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    #popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
-      display: none;
-      z-index: 10;
-    }
-
-    #overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      z-index: 5;
-    }
-
-    #popup ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    button {
-      background-color: lightblue;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo">Goha</div>
-    <nav>
-      <a href="#"><i class="fas fa-home"></i> Goha</a>
-      <a href="../Student_courses/page6.html">Student Courses</a>
-      <a href="../teachers/teachers.html">Techers</a>
-      <a href="../attendance/attdetails.html">Attendance</a>
-      <a href="../Make Quiz/addQuestion.html">Quiz maker</a>
-      <a href="../QueizApp/quizApp.html">Quiz</a>
-    </nav>
-    <a href="../login/index with bottun.html" class="cta">SignUp</a>
-    <span class="menu-btn"><i class="fas fa-bars"></i></span>
-  </header>
-
-  
-
-
-  <h1>Meet the Teachers</h1>
-  <div id="teachers-container"></div>
-
- 
-  <div id="overlay" onclick="closePopup()"></div>
-  <div id="popup">
-    <h2 id="teacher-name"></h2>
-    <h3>Schedule</h3>
-    <ul id="teacher-schedule"></ul>
-    <button onclick="closePopup()">Close</button>
-  </div>
-
-
-  <footer>
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-item">
-          <h3>About Us</h3>
-          <p>Discover who we are and our mission to provide excellent financial insights.</p>
-        </div>
-        <div class="footer-item">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-          </ul>
-        </div>
-        <div class="footer-item">
-          <h3>Contact Us</h3>
-          <p>Email: support@goha.com</p>
-          <p>Phone: +123 456 7890</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2024 Goha. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-
-
-
-  <script>
-  
-    const teachers = [
-      {
-        name: "Ahmed Ali",
-        subject: "الرياضيات",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTknFzIQACdeUZA7wpvu5hUKNXnC4TJJXcN2w&s",
-        schedule: ["Monday: 10:00 AM - 11:00 AM", "Wednesday: 2:00 PM - 3:00 PM"]
-      },
-      {
-        name: "Sara Mohamed",
-        subject: "الفيزياء",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwkPtzEhbQYNqxp0W4leAB9URgAoqM8MYrrw&s",
-        schedule: ["Tuesday: 9:00 AM - 10:00 AM", "Thursday: 1:00 PM - 2:00 PM"]
-      },
-      {
-        name: "Khaled Sakr",
-        subject: "الكيمياء",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_s1w_Mywqi4dslXKZGP6PhoMthJKd9ExQyQ&s",
-        schedule: ["Monday: 3:00 PM - 4:00 PM", "Friday: 10:00 AM - 11:00 AM"]
-      },
-      {
-        name: "Abdul Hamid",
-        subject: "اللغة الإنجليزية",
-        image: "https://yt3.googleusercontent.com/UT7z0wK8goWWk_19PZmvFYlwXd8wxy1wI77YykeoXd1hZyHECAUrXLzesngbLQ62P24VgOqX=s160-c-k-c0x00ffffff-no-rj",
-        schedule: ["Wednesday: 11:00 AM - 12:00 PM", "Friday: 1:00 PM - 2:00 PM"]
-      },
-      {
-        name: "Ahmed Adel",
-        subject: "التاريخ",
-        image: "https://mostaql.hsoubcdn.com/uploads/thumbnails/2758783/64f5851e57837/%D8%A7%D8%AD%D9%85%D8%AF-%D8%B9%D8%A7%D8%AF%D9%84-copy.jpg",
-        schedule: ["Tuesday: 10:00 AM - 11:00 AM", "Thursday: 3:00 PM - 4:00 PM"]
+  <head>
+    <link rel="stylesheet" href="new.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teachers</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        color: #333;
+        text-align: center;
       }
-    ];
 
-    function addTeacher(teacher) {
-      const container = document.getElementById("teachers-container");
-      const teacherDiv = document.createElement("div");
-      teacherDiv.className = "teacher";
+      .teacher {
+        display: inline-block;
+        background-color: #fff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        text-align: center;
+      }
 
-      teacherDiv.innerHTML = `
+      .teacher img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      #popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        display: none;
+        z-index: 10;
+      }
+
+      #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 5;
+      }
+
+      #popup ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      button {
+        background-color: lightblue;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Goha</div>
+      <nav>
+        <a href="../homeBage/home.html"><i class="fas fa-home"></i> Goha</a>
+        <a href="../Student_courses/page6.html">Student Courses</a>
+        <a href="../teachers/teachers.html">Techers</a>
+        <a href="../attendance/attendance.html">Attendance</a>
+        <a href="../Make Quiz/addQuestion.html">Quiz maker</a>
+        <a href="../QueizApp/quizApp.html">Quiz</a>
+      </nav>
+      <a href="../login/index with bottun.html" class="cta">SignUp</a>
+      <span class="menu-btn"><i class="fas fa-bars"></i></span>
+    </header>
+
+    <h1>Meet the Teachers</h1>
+    <div id="teachers-container"></div>
+
+    <div id="overlay" onclick="closePopup()"></div>
+    <div id="popup">
+      <h2 id="teacher-name"></h2>
+      <h3>Schedule</h3>
+      <ul id="teacher-schedule"></ul>
+      <button onclick="closePopup()">Close</button>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-item">
+            <h3>About Us</h3>
+            <p>
+              Discover who we are and our mission to provide excellent financial
+              insights.
+            </p>
+          </div>
+          <div class="footer-item">
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <h3>Contact Us</h3>
+            <p>Email: support@goha.com</p>
+            <p>Phone: +123 456 7890</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2024 Goha. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const teachers = [
+        {
+          name: "Ahmed Ali",
+          subject: "الرياضيات",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTknFzIQACdeUZA7wpvu5hUKNXnC4TJJXcN2w&s",
+          schedule: [
+            "Monday: 10:00 AM - 11:00 AM",
+            "Wednesday: 2:00 PM - 3:00 PM",
+          ],
+        },
+        {
+          name: "Sara Mohamed",
+          subject: "الفيزياء",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwkPtzEhbQYNqxp0W4leAB9URgAoqM8MYrrw&s",
+          schedule: [
+            "Tuesday: 9:00 AM - 10:00 AM",
+            "Thursday: 1:00 PM - 2:00 PM",
+          ],
+        },
+        {
+          name: "Khaled Sakr",
+          subject: "الكيمياء",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_s1w_Mywqi4dslXKZGP6PhoMthJKd9ExQyQ&s",
+          schedule: [
+            "Monday: 3:00 PM - 4:00 PM",
+            "Friday: 10:00 AM - 11:00 AM",
+          ],
+        },
+        {
+          name: "Abdul Hamid",
+          subject: "اللغة الإنجليزية",
+          image:
+            "https://yt3.googleusercontent.com/UT7z0wK8goWWk_19PZmvFYlwXd8wxy1wI77YykeoXd1hZyHECAUrXLzesngbLQ62P24VgOqX=s160-c-k-c0x00ffffff-no-rj",
+          schedule: [
+            "Wednesday: 11:00 AM - 12:00 PM",
+            "Friday: 1:00 PM - 2:00 PM",
+          ],
+        },
+        {
+          name: "Ahmed Adel",
+          subject: "التاريخ",
+          image:
+            "https://mostaql.hsoubcdn.com/uploads/thumbnails/2758783/64f5851e57837/%D8%A7%D8%AD%D9%85%D8%AF-%D8%B9%D8%A7%D8%AF%D9%84-copy.jpg",
+          schedule: [
+            "Tuesday: 10:00 AM - 11:00 AM",
+            "Thursday: 3:00 PM - 4:00 PM",
+          ],
+        },
+      ];
+
+      function addTeacher(teacher) {
+        const container = document.getElementById("teachers-container");
+        const teacherDiv = document.createElement("div");
+        teacherDiv.className = "teacher";
+
+        teacherDiv.innerHTML = `
         <h2>${teacher.name}</h2>
-        <img src="${teacher.image}" alt="${teacher.name}" onclick="showPopup(${teacher.name}, ${JSON.stringify(teacher.schedule)})">
+        <img src="${teacher.image}" alt="${teacher.name}" onclick="showPopup(${
+          teacher.name
+        }, ${JSON.stringify(teacher.schedule)})">
         <p><strong>المادة:</strong> ${teacher.subject}</p>
       `;
 
-      container.appendChild(teacherDiv);
-    }
+        container.appendChild(teacherDiv);
+      }
 
-    function showPopup(name, schedule) {
-      document.getElementById('teacher-name').innerText = name;
-      const scheduleList = document.getElementById('teacher-schedule');
-      scheduleList.innerHTML = ''; 
-      schedule.forEach(item => {
-        const li = document.createElement('li');
-        li.innerText = item;
-        scheduleList.appendChild(li);
-      });
-      document.getElementById('popup').style.display = 'block';
-      document.getElementById('overlay').style.display = 'block';
-    }
+      function showPopup(name, schedule) {
+        document.getElementById("teacher-name").innerText = name;
+        const scheduleList = document.getElementById("teacher-schedule");
+        scheduleList.innerHTML = "";
+        schedule.forEach((item) => {
+          const li = document.createElement("li");
+          li.innerText = item;
+          scheduleList.appendChild(li);
+        });
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+      }
 
-   
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
-      document.getElementById('overlay').style.display = 'none';
-    }
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+      }
 
-    
-    teachers.forEach(addTeacher);
-  </script>
-</body>
+      teachers.forEach(addTeacher);
+    </script>
+  </body>
 </html>

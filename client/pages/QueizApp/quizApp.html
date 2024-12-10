@@ -1,52 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz</title>
-    <link rel="stylesheet" href="quizApp.css">
-</head>
-<body>
+    <link rel="stylesheet" href="quizApp.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="header">
-            <h2>Quiz: SA</h2>
-            <div class="timer" id="timer">Time: 05:00</div>
+      <div class="header">
+        <h2>Quiz: SA</h2>
+        <div class="timer" id="timer">Time: 05:00</div>
+      </div>
+      <div class="questions" id="questions">
+        <div class="question">
+          <label>1. Question one?</label>
+          <ul class="options">
+            <li>
+              <label><input type="radio" name="q1" /> Answer a</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q1" /> Answer b</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q1" /> Answer c</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q1" /> Answer d</label>
+            </li>
+          </ul>
         </div>
-        <div class="questions" id="questions">
-            <div class="question">
-                <label>1. Question one?</label>
-                <ul class="options">
-                    <li><label><input type="radio" name="q1"> Answer a</label></li>
-                    <li><label><input type="radio" name="q1"> Answer b</label></li>
-                    <li><label><input type="radio" name="q1"> Answer c</label></li>
-                    <li><label><input type="radio" name="q1"> Answer d</label></li>
-                </ul>
-            </div>
-            <div class="question"> 
-                <label>2. Question two?</label>
-                <ul class="options">
-                    <li><label><input type="radio" name="q2"> Answer</label></li>
-                    <li><label><input type="radio" name="q2"> Answer</label></li>
-                    <li><label><input type="radio" name="q2"> Answer</label></li>
-                    <li><label><input type="radio" name="q2"> Answer</label></li>
-                </ul>
-            </div>
-            <div class="question"> 
-                <label>3. Question two?</label>
-                <ul class="options">
-                    <li><label><input type="radio" name="q2"> Answer</label></li>
-                    <li><label><input type="radio" name="q2"> Answer</label></li>
-                    <li><label><input type="radio" name="q2"> Answer</label></li>
-                    <li><label><input type="radio" name="q2"> Answer</label></li>
-                </ul>
-            </div>
+        <div class="question">
+          <label>2. Question two?</label>
+          <ul class="options">
+            <li>
+              <label><input type="radio" name="q2" /> Answer</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q2" /> Answer</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q2" /> Answer</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q2" /> Answer</label>
+            </li>
+          </ul>
         </div>
-        <div class="message" id="message">Time is up! Your answers have been submitted.</div>
-        <div class="footer">
-            <button class="btn" id="submitBtn">Submit Now</button>
+        <div class="question">
+          <label>3. Question two?</label>
+          <ul class="options">
+            <li>
+              <label><input type="radio" name="q2" /> Answer</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q2" /> Answer</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q2" /> Answer</label>
+            </li>
+            <li>
+              <label><input type="radio" name="q2" /> Answer</label>
+            </li>
+          </ul>
         </div>
+      </div>
+      <div class="message" id="message">
+        Time is up! Your answers have been submitted.
+      </div>
+      <div class="footer">
+        <button class="btn" id="submitBtn">Submit Now</button>
+      </div>
     </div>
 
     <script src="quizApp.js"></script>
-</body>
+  </body>
 </html>

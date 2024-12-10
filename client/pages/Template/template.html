@@ -14,10 +14,10 @@
   <header>
     <div class="logo">Goha</div>
     <nav>
-      <a href="#"><i class="fas fa-home"></i> Goha</a>
+      <a href="../homeBage/home.html"><i class="fas fa-home"></i> Goha</a>
       <a href="../Student_courses/page6.html">Student Courses</a>
       <a href="../teachers/teachers.html">Techers</a>
-      <a href="../attendance/attdetails.html">Attendance</a>
+      <a href="../attendance/attendance.html">Attendance</a>
       <a href="../Make Quiz/addQuestion.html">Quiz maker</a>
       <a href="../QueizApp/quizApp.html">Quiz</a>
     </nav>
@@ -28,72 +28,14 @@
   <div class="side-menu" id="sideMenu">
     <a href="home.html">home</a>
     <a href="../Student_courses/page6.html">Student Courses</a>
-    <a href="../Teacher_courses/">Teacher Courses</a>
+    <a href="../Teacher_courses/page5.htmlpage5.html">Teacher Courses</a>
     <a href="../teachers/teachers.html">Techers</a>
     <a href="../attendance/attendance.html">Attendance</a>
-    <a href="../attendance/attdetails.html">Attendance details</a>
+    <a href="../attendance/attendance.html">Attendance details</a>
     <a href="../Make Quiz/addQuestion.html"> Quiz maker</a>
     <a href="../QueizApp/quizApp.html"> Quiz</a>
   </div>
-  <main>
-    <section id="teached-courses">
-        <h2>Courses Teached</h2>
-        <div class="course-container" id="teached-course-container">
-            <!-- Teached courses will be dynamically added here -->
-        </div>
-    </section>
-    <section id="available-courses">
-        <h2>Available Courses</h2>
-        <div class="course-container" id="course-selection">
-            <!-- Existing courses will be dynamically added here -->
-        </div>
-    </section>
-    <section id="add-course">
-        <div class="course-card add-card" id="add-course-card">
-            <h3>Add New Course</h3>
-            <button id="add-course-button">+</button>
-        </div>
-    </section>
-</main>
-<div id="teach-existing-popup" class="popup">
-    <div class="popup-content">
-        <h2 id="existing-popup-title">Teach Existing Course</h2>
-        <form id="teach-existing-course-form">
-            <label for="course-select">Select Course:</label>
-            <select id="course-select"></select>
-            <label for="existing-course-price">Price:</label>
-            <input type="number" id="existing-course-price" required>
-            <label for="existing-course-date">Date:</label>
-            <input type="date" id="existing-course-date" required>
-            <button type="submit">Submit</button>
-            <button type="button" id="close-existing-popup">Cancel</button>
-        </form>
-    </div>
-</div>
-<div id="teach-new-popup" class="popup">
-    <div class="popup-content">
-        <h2 id="new-popup-title">Add New Course</h2>
-        <form id="teach-new-course-form">
-            <label for="new-course-name">Course Name:</label>
-            <input type="text" id="new-course-name" required>
-            <label for="new-course-description">Course Description:</label>
-            <textarea id="new-course-description" required></textarea>
-            <label for="new-course-price">Price:</label>
-            <input type="number" id="new-course-price" required>
-            <label for="new-course-date">Date:</label>
-            <input type="date" id="new-course-date" required>
-            <button type="submit">Submit</button>
-            <button type="button" id="close-new-popup">Cancel</button>
-        </form>
-    </div>
-</div>
-<div id="confirm-delete-popup" class="popup">
-    <div class="popup-content">
-        <p>Are you sure you want to delete this course?</p>
-        <button id="confirm-delete">Yes</button>
-        <button id="cancel-delete">No</button>
-    </div>
-</div>
+  
   <footer>
     <div class="footer-container">
       <div class="footer-content">

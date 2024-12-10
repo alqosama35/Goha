@@ -8,11 +8,43 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
     />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <link rel="stylesheet" href="addQuestion.css">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="addQuestion.css" />
+    <link rel="stylesheet" href="../Template/template.css" />
   </head>
   <body>
+    <header>
+      <div class="logo">Goha</div>
+      <nav>
+        <a href="../homeBage/home.html"><i class="fas fa-home"></i> Goha</a>
+        <a href="../Student_courses/page6.html">Student Courses</a>
+        <a href="../teachers/teachers.html">Techers</a>
+        <a href="../attendance/attendance.html">Attendance</a>
+        <a href="../Make Quiz/addQuestion.html">Quiz maker</a>
+        <a href="../QueizApp/quizApp.html">Quiz</a>
+      </nav>
+      <a href="../login/index with bottun.html" class="cta">SignUp</a>
+      <span class="menu-btn"><i class="fas fa-bars"></i></span>
+    </header>
+    <div class="side-menu" id="sideMenu">
+      <a href="home.html">home</a>
+      <a href="../Student_courses/page6.html">Student Courses</a>
+      <a href="../Teacher_courses/page5.htmlpage5.html">Teacher Courses</a>
+      <a href="../teachers/teachers.html">Techers</a>
+      <a href="../attendance/attendance.html">Attendance</a>
+      <a href="../attendance/attendance.html">Attendance details</a>
+      <a href="../Make Quiz/addQuestion.html"> Quiz maker</a>
+      <a href="../QueizApp/quizApp.html"> Quiz</a>
+    </div>
     <div class="container">
       <h1>Questions form</h1>
       <form id="addQuestionForm">
@@ -42,9 +74,9 @@
         <button type="submit" class="sub">Add</button>
       </form>
       <button type="submit" class="Finish">Finish</button>
-
     </div>
 
-  <script src="addQuestion.js"></script>
+    <script src="addQuestion.js"></script>
+    <script src="../Template/template.js"></script>
   </body>
 </html>

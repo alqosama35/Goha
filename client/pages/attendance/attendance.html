@@ -1,307 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<head>
-  <link rel="stylesheet" href="new.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Student Attendance</title>
-  <style>
-    body {
-      padding-bottom: 100px; 
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
+  <head>
+    <link rel="stylesheet" href="new.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Attendance</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
 
-    h1 {
-      text-align: center;
-      color: #333;
-    }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
 
-    .attendance-table {
-      width: 90%;
-      margin: 20px auto;
-      border-collapse: collapse;
-      background: white;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
+      .attendance-table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
 
-    .attendance-table th, .attendance-table td {
-      padding: 12px;
-      text-align: center;
-      border: 1px solid #ddd;
-    }
+      .attendance-table th,
+      .attendance-table td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ddd;
+      }
 
-    .attendance-table th {
-      background-color: #4CAF50;
-      color: white;
-    }
+      .attendance-table th {
+        background-color: #4caf50;
+        color: white;
+      }
 
-    .attendance-table tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
+      .attendance-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
 
-    .attendance-table tr:hover {
-      background-color: #f1f1f1;
-    }
+      .attendance-table tr:hover {
+        background-color: #f1f1f1;
+      }
 
-    .status-present {
-      color: #0052CC;
-      font-weight: bold;
-    }
+      .status-present {
+        color: #0052cc;
+        font-weight: bold;
+      }
 
-    .status-absent {
-      color: red;
-      font-weight: bold;
-    }
+      .status-absent {
+        color: red;
+        font-weight: bold;
+      }
 
+      h2 {
+        text-align: center;
+        color: #333;
+      }
 
-    h1, h2 {
-      text-align: center;
-      color: #fff;
-    }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+      li {
+        background-color: #fff;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-    li {
-      background-color: #fff;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+      }
 
-    button {
-      background-color: lightblue;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 5px 10px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background-color 0.3s;
-    }
+      button:hover {
+        background-color: #0056b3;
+      }
 
-    button:hover {
-      background-color: #007bff;
-    }
+      #history {
+        margin-top: 20px;
+      }
 
-    #history {
-      margin-top: 20px;
-    }
+      #history li {
+        background-color: #f9f9f9;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Goha</div>
+      <nav>
+        <a href="../homeBage/home.html"><i class="fas fa-home"></i> Goha</a>
+        <a href="../Student_courses/page6.html">Student Courses</a>
+        <a href="../teachers/teachers.html">Teachers</a>
+        <a href="../attendance/attendance.html">Attendance</a>
+        <a href="../Make Quiz/addQuestion.html">Quiz maker</a>
+        <a href="../QueizApp/quizApp.html">Quiz</a>
+      </nav>
+      <a href="../login/index with bottun.html" class="cta">SignUp</a>
+      <span class="menu-btn"><i class="fas fa-bars"></i></span>
+    </header>
 
-    #history li {
-      background-color: #f9f9f9;
-      color: #333;
-    }
-     
+    <h1>Student Attendance</h1>
 
+    <table class="attendance-table">
+      <thead>
+        <tr id="header-row">
+          <th>Student Name</th>
+        </tr>
+      </thead>
 
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">Goha</div>
-    <nav>
-      <a href="#"><i class="fas fa-home"></i> Goha</a>
-      <a href="../Student_courses/page6.html">Student Courses</a>
-      <a href="../teachers/teachers.html">Techers</a>
-      <a href="../attendance/attdetails.html">Attendance</a>
-      <a href="../Make Quiz/addQuestion.html">Quiz maker</a>
-      <a href="../QueizApp/quizApp.html">Quiz</a>
-    </nav>
-    <a href="../login/index with bottun.html" class="cta">SignUp</a>
-    <span class="menu-btn"><i class="fas fa-bars"></i></span>
-  </header>
+      <tbody id="table-body"></tbody>
+    </table>
 
-  
+    <ul>
+      <li>John Doe <button onclick="panStudent('John Doe')">Pan</button></li>
+      <li>
+        Jane Smith <button onclick="panStudent('Jane Smith')">Pan</button>
+      </li>
+      <li>
+        Emily Brown <button onclick="panStudent('Emily Brown')">Pan</button>
+      </li>
+      <li>Ali <button onclick="panStudent('Ali')">Pan</button></li>
+    </ul>
 
-  <h1>Student Attendance</h1>
+    <h2>Pan History</h2>
+    <ul id="history"></ul>
 
-  <table class="attendance-table">
-    <thead>
-      <tr id="header-row">
-        <th>Student Name</th>
-      
-      </tr>
-    </thead>
+    <script>
+      const students = ["John Doe", "Jane Smith", "Emily Brown", "Ali"];
+      const courses = [
+        "Lesson 1",
+        "Lesson 2",
+        "Lesson 3",
+        "Lesson 4",
+        "Lesson 5",
+      ];
 
-    <tbody id="table-body">
- 
-    </tbody>
-  </table>
-  
-  <ul>
-    <li>John Doe <button onclick="panStudent('John Doe')">Pan</button></li>
-    <li>Jane Smith <button onclick="panStudent('Jane Smith')">Pan</button></li>
-    <li>Emily Brown <button onclick="panStudent('Emily Brown')">Pan</button></li>
-    <li>Ali <button onclick="panStudent('Ali')">Pan</button></li>
-  </ul>
+      const attendanceData = [
+        [1, 1, 0, 1, 0],
+        [0, 1, 1, 0, 1],
+        [1, 1, 0, 1, 1],
+        [0, 0, 0, 0, 0],
+      ];
 
-  <h2>Pan History</h2>
-  <ul id="history"></ul>
-
-
-  
-
-  <script>
-
-
-    
-    const students = ["John Doe", "Jane Smith", "Emily Brown", "Ali"];
-    const courses = ["Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5"];
-
-   
-    const attendanceData = [
-      [1, 1, 0, 1, 0],
-      [0, 1, 1, 0, 1], 
-      [1, 1, 0, 1, 1], 
-      [0, 0, 0, 0, 0]  
-    ]
-  
- 
-
-    
-    const headerRow = document.getElementById("header-row");
-    courses.forEach(course => {
-      const th = document.createElement("th");
-      th.textContent = course;
-      headerRow.appendChild(th);
-    });
-
-    
-    const tableBody = document.getElementById("table-body");
-    students.forEach((student, studentIndex) => {
-      const row = document.createElement("tr");
-
-      
-      const nameCell = document.createElement("td");
-      const nameLink = document.createElement("a");
-      nameLink.textContent = student;
-      nameLink.href = `attdetails.html?name=${encodeURIComponent(student)}&data=${JSON.stringify(attendanceData[studentIndex])}`;
-      nameCell.appendChild(nameLink);
-      row.appendChild(nameCell);
-
-      
-      attendanceData[studentIndex].forEach(attendance => {
-        const attendanceCell = document.createElement("td");
-        attendanceCell.textContent = attendance ? "Present" : "Absent";
-        attendanceCell.className = attendance ? "status-present" : "status-absent";
-        row.appendChild(attendanceCell);
+      const headerRow = document.getElementById("header-row");
+      courses.forEach((course) => {
+        const th = document.createElement("th");
+        th.textContent = course;
+        headerRow.appendChild(th);
       });
 
-      tableBody.appendChild(row);
-    });
+      const tableBody = document.getElementById("table-body");
+      students.forEach((student, studentIndex) => {
+        const row = document.createElement("tr");
 
+        const nameCell = document.createElement("td");
+        const nameLink = document.createElement("a");
+        nameLink.textContent = student;
+        nameLink.href = `attdetails.html?name=${encodeURIComponent(
+          student
+        )}&data=${JSON.stringify(attendanceData[studentIndex])}`;
+        nameCell.appendChild(nameLink);
+        row.appendChild(nameCell);
 
+        attendanceData[studentIndex].forEach((attendance) => {
+          const attendanceCell = document.createElement("td");
+          attendanceCell.textContent = attendance ? "Present" : "Absent";
+          attendanceCell.className = attendance
+            ? "status-present"
+            : "status-absent";
+          row.appendChild(attendanceCell);
+        });
 
-  /*
-  function loadHistory() {
-      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
-      const historyList = document.getElementById('history');
+        tableBody.appendChild(row);
+      });
 
-      historyList.innerHTML = history
-        .map(
-          (item, index) =>
-            `<li>
-              ${item} 
-              <button onclick="removePan(${index})">Remove</button>
-            </li>`
-        )
-        .join('');
-    }
+      function panStudent(student) {
+        const timestamp = new Date().toLocaleString();
+        const history = JSON.parse(localStorage.getItem("panHistory")) || [];
+        history.push(`${student} - ${timestamp}`);
+        localStorage.setItem("panHistory", JSON.stringify(history));
+        loadHistory();
+      }
 
-    // Add a new pan to local storage
-    function panStudent(student) {
-      const timestamp = new Date().toLocaleString();
-      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
-      history.push(`${student} `);
-      localStorage.setItem('panHistory', JSON.stringify(history));
-      loadHistory();
-    }*/
-
-    function panStudent(student) {
-  const timestamp = new Date().toLocaleString();
-  const history = JSON.parse(localStorage.getItem('panHistory')) || [];
-  history.push(`${student} - ${timestamp}`);
-  localStorage.setItem('panHistory', JSON.stringify(history));
-  loadHistory();
-}
-
-function loadHistory() {
-  const historyList = document.getElementById('history');
-  const history = JSON.parse(localStorage.getItem('panHistory')) || [];
-  historyList.innerHTML = history.map((item, index) =>
-    `<li>
+      function loadHistory() {
+        const historyList = document.getElementById("history");
+        const history = JSON.parse(localStorage.getItem("panHistory")) || [];
+        historyList.innerHTML = history
+          .map(
+            (item, index) =>
+              `<li>
       ${item} 
       <button onclick="removePan(${index})">Remove</button>
     </li>`
-  ).join('');
-}
+          )
+          .join("");
+      }
 
-function removePan(index) {
-  const history = JSON.parse(localStorage.getItem('panHistory')) || [];
-  history.splice(index, 1);
-  localStorage.setItem('panHistory', JSON.stringify(history));
-  loadHistory();
-}
+      function removePan(index) {
+        const history = JSON.parse(localStorage.getItem("panHistory")) || [];
+        history.splice(index, 1);
+        localStorage.setItem("panHistory", JSON.stringify(history));
+        loadHistory();
+      }
 
-loadHistory();
-
-
-    // Remove a pan from local storage
-    
-    function removePan(index) {
-      const history = JSON.parse(localStorage.getItem('panHistory')) || [];
-      history.splice(index, 1); // Remove the selected item
-      localStorage.setItem('panHistory', JSON.stringify(history));
       loadHistory();
-    }
+    </script>
 
     
-    loadHistory();
-
-
-
-  
-
-
-  </script>
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-content">
-      <div class="footer-item">
-        <h3>About Us</h3>
-        <p>Discover who we are and our mission to provide excellent financial insights.</p>
-      </div>
-      <div class="footer-item">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-        </ul>
-      </div>
-      <div class="footer-item">
-        <h3>Contact Us</h3>
-        <p>Email: support@goha.com</p>
-        <p>Phone: +123 456 7890</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024 Goha. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-</body>
+  </body>
 </html>
