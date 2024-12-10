@@ -34,174 +34,224 @@
     <a href="../attendance/attendance.html">Attendance details</a>
     <a href="../Make Quiz/addQuestion.html"> Quiz maker</a>
     <a href="../QueizApp/quizApp.html"> Quiz</a>
+      <a href="../add/add class admin.html"> Add Class</a>
   </div>
 
     </header>
     <main>
-        <style> body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom right, #747b82, #a6afb4);
-        }
-        
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        
-        main {
-            padding: 2rem;
-        }
-        
-        .Class-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        
-        .Class-card {
-            background-color: #fff;
-            margin: 1rem;
-            padding: 0;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
-            text-align: center;
-            cursor: pointer;
-        }
-        
-        .Class-card:hover {
-            transform: scale(1.05);
-        }
-        
-        .Class-card h3 {
-            margin: 1rem 0;
-        }
-        
-        .Class-card .hidden-info {
-            display: none;
-            margin: 1rem 0;
-        }
-        
-        .Class-card:hover .hidden-info {
-            display: block;
-        }
-        
-        .add-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-        }
-        
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .popup-content {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 5px;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        }
-        
-        .popup-content form label,
-        .popup-content form input,
-        .popup-content form textarea,
-        .popup-content form select {
-            display: block;
-            width: 100%;
-            margin-bottom: 1rem;
-        }
-        
-        .popup-content form input,
-        .popup-content form textarea,
-        .popup-content form select {
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        
-        .popup-content button {
-            padding: 0.5rem 1rem;
-            margin: 0.5rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #333;
-            color: #fff;
-        }
-        
-        .popup-content button:hover {
-            background-color: #555;
-        }
-        
-        #go-back-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        
-        #go-back-button:hover {
-            background-color: #555;
-        }
-        
-        .delete-button {
-            background-color: #ff4d4d;
-            color: #fff;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .modal-button {
-            padding: 0.5rem 1rem;
-            margin: 0.5rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #333;
-            color: #fff;
-        }
-        
-        .modal-button:hover {
-            background-color: #555;
-        }
-        
-        .modal-container {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 5px;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }</style>
-        <section id="Reserved-Classes">
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+                margin: 0;
+                padding: 0;
+                background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
+                color: #333;
+            }
+
+            header {
+                background-color: #1f2937;
+                color: #fff;
+                padding: 1rem 0;
+                text-align: center;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            nav a {
+                color: #fff;
+                margin: 0 1rem;
+                text-decoration: none;
+                font-weight: 700;
+            }
+
+            nav a:hover {
+                text-decoration: underline;
+            }
+
+            .cta {
+                background-color: #3b82f6;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-weight: 700;
+            }
+
+            .cta:hover {
+                background-color: #2563eb;
+            }
+
+            .menu-btn {
+                display: none;
+            }
+
+            .side-menu {
+                display: none;
+            }
+
+            main {
+                padding: 2rem;
+            }
+
+            .Class-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .Class-card {
+                background-color: #fff;
+                margin: 1rem;
+                padding: 1rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                width: 30%;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s, box-shadow 0.3s;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .Class-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .Class-card h3 {
+                margin: 1rem 0;
+                font-size: 1.5rem;
+            }
+
+            .Class-card .hidden-info {
+                display: none;
+                margin: 1rem 0;
+            }
+
+            .Class-card:hover .hidden-info {
+                display: block;
+            }
+
+            .add-card {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+                background-color: #3b82f6;
+                color: #fff;
+            }
+
+            .popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                justify-content: center;
+                align-items: center;
+            }
+
+            .popup-content {
+                background-color: #fff;
+                padding: 2rem;
+                border-radius: 10px;
+                text-align: center;
+                max-width: 500px;
+                width: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .popup-content form label,
+            .popup-content form input,
+            .popup-content form textarea,
+            .popup-content form select {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .popup-content form input,
+            .popup-content form textarea,
+            .popup-content form select {
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .popup-content button {
+                padding: 0.5rem 1rem;
+                margin: 0.5rem;
+                cursor: pointer;
+                border: none;
+                border-radius: 5px;
+                background-color: #1f2937;
+                color: #fff;
+                transition: background-color 0.3s;
+            }
+
+            .popup-content button:hover {
+                background-color: #3b82f6;
+            }
+
+            #go-back-button {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: #1f2937;
+                color: #fff;
+                border: none;
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+            #go-back-button:hover {
+                background-color: #3b82f6;
+            }
+
+            .delete-button {
+                background-color: #ef4444;
+                color: #fff;
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .delete-button:hover {
+                background-color: #dc2626;
+            }
+
+            .modal-button {
+                padding: 0.5rem 1rem;
+                margin: 0.5rem;
+                cursor: pointer;
+                border: none;
+                border-radius: 5px;
+                background-color: #1f2937;
+                color: #fff;
+                transition: background-color 0.3s;
+            }
+
+            .modal-button:hover {
+                background-color: #3b82f6;
+            }
+
+            .modal-container {
+                background-color: #fff;
+                padding: 2rem;
+                border-radius: 10px;
+                text-align: center;
+                max-width: 500px;
+                width: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        </style>   <section id="Reserved-Classes"></section>
             <h2>Classes Reserved</h2>
             <div class="Class-container" id="Reserved-Class-container">
                 <!-- Taught Classes will be dynamically added here -->
@@ -261,32 +311,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-container">
-          <div class="footer-content">
-            <div class="footer-item">
-              <h3>About Us</h3>
-              <p>Discover who we are and our mission to provide excellent financial insights.</p>
-            </div>
-            <div class="footer-item">
-              <h3>Quick Links</h3>
-              <ul>
-                <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-              </ul>
-            </div>
-            <div class="footer-item">
-              <h3>Contact Us</h3>
-              <p>Email: support@goha.com</p>
-              <p>Phone: +123 456 7890</p>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            <p>© 2024 Goha. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+    
     <script > 
     //not me
 let menu = document.getElementsByClassName("menu-btn")[0];
